@@ -25,6 +25,6 @@ public class Graph {
             adj.get(e.v).add(new Edge(e.u, e.v, e.w)); //undirected mirror
         }
     }
-    public int E() { return edges.size(); }
+    public int E() { return edges.size();}
 }
 

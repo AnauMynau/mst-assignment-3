@@ -32,6 +32,7 @@ public class Prim {
                 continue;
             }
             vis[to] = true;
+            taken++;
 
         }
 

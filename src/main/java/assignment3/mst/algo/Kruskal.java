@@ -26,9 +26,15 @@ public class Kruskal {
 
         for  (Edge e : sorted) {
             out.ops.edgeChecks++;
-            if (.union)
         }
 
-        Union
+        if (taken != g.V - 1) {
+            out.mstCost = Long.MAX_VALUE;
+        } else {
+            out.mstCost = total;
+        }
+        long t1 = System.nanoTime();
+        out.timeMs = (t1 - t0) / 1_000_000;
+        return out;
     }
 }

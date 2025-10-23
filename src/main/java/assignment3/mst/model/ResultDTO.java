@@ -35,7 +35,7 @@ public class ResultDTO {
         public long pqPops;     //Prim
         public long edgeConsidered;     //Prin
         public long sortComparisons;    // optional, not measured precisely
-        public long edgeCheck;      // Kruslal - edges inspected
+        public long edgeChecks;      // Kruslal - edges inspected
         public long unions;     //Kruskal - succesful unions
         public long finds;      //Kruskal - find operations
     }

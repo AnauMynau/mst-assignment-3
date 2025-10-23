@@ -33,9 +33,25 @@ public class Prim {
             }
             vis[to] = true;
             taken++;
+            total += w;
 
+            out.mstEdges.add(new ResultDTO.EdgeTriple(from, to, w));
+            for (Edge e :  g.adj.get(to)) {
+                if (!vis[e.v]) {
+                    pq.add(new int[]{e.w, e.u, e.v});
+                    out.ops.pqPushes++;
+                    out.ops.edgeConsidered++;
+                }
+            }
         }
-
+        if (taken != g.V - 1) {
+        // Graph was disconnected — no full MST
+            out.mstCost = Long.MAX_VALUE;
+        } else {
+            out.mstCost = total;
+        }
+        long t1 = System.nanoTime();
+        out.timeMs = (t1 - t0) / 1_000_000;
         return out;
     }
 }

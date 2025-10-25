@@ -1,4 +1,4 @@
-package assignment3.mst;
+package edu.assignment3.mst;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,6 +1,12 @@
-import assignment3.mst.algo.*;
-import assignment3.mst.io.JsonIO;
-import assignment3.mst.model.*;
+package edu.assignment3.mst;
+
+import edu.assignment3.mst.algo.Kruskal;
+import edu.assignment3.mst.algo.Prim;
+import edu.assignment3.mst.io.JsonIO;
+import edu.assignment3.mst.model.Edge;
+import edu.assignment3.mst.model.Graph;
+import edu.assignment3.mst.model.InputData;
+import edu.assignment3.mst.model.ResultDTO;
 import org.junit.jupiter.api.*;
 
 import java.nio.file.Path;

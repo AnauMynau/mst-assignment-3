@@ -1,8 +1,8 @@
-package assignment3.mst.algo;
+package edu.assignment3.mst.algo;
 
-import assignment3.mst.model.Edge;
-import assignment3.mst.model.Graph;
-import assignment3.mst.model.ResultDTO;
+import edu.assignment3.mst.model.Edge;
+import edu.assignment3.mst.model.Graph;
+import edu.assignment3.mst.model.ResultDTO;
 
 import java.util.ArrayList;
 import java.util.Collections;

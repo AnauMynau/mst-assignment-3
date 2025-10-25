@@ -1,4 +1,4 @@
-package assignment3.mst.model;
+package edu.assignment3.mst.model;
 
 import java.util.List;
 

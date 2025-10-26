@@ -10,9 +10,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Kruskal {
-    public static ResultDTO.Algo run(Graph g){
+    public static ResultDTO.AlgoResult run(Graph g){
         long t0=System.nanoTime();
-        ResultDTO.Algo out=new ResultDTO.Algo();
+        ResultDTO.AlgoResult out=new ResultDTO.AlgoResult();
         if(g.V==0){ out.mstCost=0; out.timeMs=0; return out; }
         List<Edge> sorted=new ArrayList<>(g.edges); Collections.sort(sorted);
         UnionFind uf=new UnionFind(g.V);

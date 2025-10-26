@@ -8,9 +8,9 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Prim {
-    public static ResultDTO.Algo run(Graph g) {
+    public static ResultDTO.AlgoResult run(Graph g) {
         long t0 = System.nanoTime();
-        ResultDTO.Algo out = new ResultDTO.Algo();
+        ResultDTO.AlgoResult out = new ResultDTO.AlgoResult();
         if (g.V == 0) { out.mstCost = 0; out.timeMs = 0; return out; }
 
         boolean[] in = new boolean[g.V];

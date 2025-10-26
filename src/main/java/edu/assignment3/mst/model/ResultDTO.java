@@ -12,14 +12,14 @@ public class ResultDTO {
         public String name; // может быть null
         public int vertices;
         public int edges;
-        public Algo prim;
-        public Algo kruskal;
+        public AlgoResult prim;
+        public AlgoResult kruskal;
         public boolean equalCost;
         public boolean connected;
     }
 
 
-    public static class Algo {
+    public static class AlgoResult {
         public long mstCost; // Long.MAX_VALUE если несвязный
         public List<EdgeTriple> mstEdges = new ArrayList<>();
         public long timeMs; // миллисекунды

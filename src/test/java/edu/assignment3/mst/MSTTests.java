@@ -20,8 +20,8 @@ public class MSTTests {
 
         for (var it : items) {
             Graph g = it.graph;
-            ResultDTO.Algo p = Prim.run(g);
-            ResultDTO.Algo k = Kruskal.run(g);
+            ResultDTO.AlgoResult p = Prim.run(g);
+            ResultDTO.AlgoResult k = Kruskal.run(g);
 
             assertEquals(p.mstCost, k.mstCost,
                     "Prim vs Kruskal cost on graph id=" + it.id);

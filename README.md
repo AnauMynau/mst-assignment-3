@@ -1,10 +1,10 @@
-# 🧮 Assignment 3: Minimum Spanning Tree (Prim & Kruskal Algorithms)
+# Assignment 3: Minimum Spanning Tree (Prim & Kruskal Algorithms)
 
-### 🎓 Course
+###  Course
 Design and Analysis of Algorithms  
 Astana IT University — Fall 2025  
 
-### 👤 Author
+###  Author
 **Inayatulla**  
 Group: SE-2423  
 
@@ -20,11 +20,11 @@ The project also includes performance measurements (execution time, operation co
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 mst-assignment-3/
 │
-├─ data/
+├─ data 
 │ ├─ ass3_input_small.json
 │ ├─ ass3_input_medium.json
 │ ├─ ass3_input_large.json
@@ -59,7 +59,7 @@ mst-assignment-3/
 
 ## 🚀 How to Run
 
-### 🧩 Build and Test
+### Build and Test
 ```bash
 mvn clean test
 
@@ -75,14 +75,14 @@ java -cp target/classes edu.assignment3.mst.Main data/ass3_input_extralarge.json
 ```
 
 Generate Summary CSV
-
+```
 java -cp target/classes edu.assignment3.mst.io.ResultToCSV output/results_medium.json output/results_summary.csv
-
+```
 
 
 Input & Output Format
 🔹 Input (Example: ass3_input_small.json)
-
+```
 {
   "graphs": [
     {
@@ -98,8 +98,9 @@ Input & Output Format
     }
   ]
 }
-
+```
 🔹 Output (Example: results_small.json)
+```
 {
   "results": [
     {
@@ -121,14 +122,15 @@ Input & Output Format
     }
   ]
 }
-
+```
 🔹 Summary CSV (Example: results_summary.csv)
+```
 id,algorithm,vertices,execution_time,operation_count,total_cost
 6,Prim,229,13,765,10925
 6,Kruskal,229,3,2367,6629
 ...
 
-
+```
 Analysis and Discussion
 1️⃣ Execution Time vs Number of Vertices
 
@@ -160,12 +162,12 @@ Prim has fewer operations on average but depends on heap performance.
 
 3️⃣ General Summary
 
-| 🧠 Algorithm | ⚙️ Best For Graph Type | ⏱️ Time Complexity | 💾 Space Complexity | 🔍 Key Characteristics |
-|:-------------|:----------------------|:------------------|:--------------------|:------------------------|
-| **Prim’s Algorithm** | Dense graphs (many edges) | **O(E log V)** | **O(V + E)** | Builds MST incrementally using a **priority queue** (min-heap). Works best when graph is stored as adjacency list or matrix. |
-| **Kruskal’s Algorithm** | Sparse graphs (few edges) | **O(E log E)** | **O(E)** | Sorts edges by weight and uses **Union–Find (Disjoint Set)** to avoid cycles. Ideal for edge list representation. |
-| **Result Accuracy** | — | ✅ Both produce the same MST total cost | — | Confirms algorithm correctness on all test graphs. |
-| **Performance Trend** | — | 🔹 *Prim* → faster on dense graphs  <br> 🔹 *Kruskal* → faster on sparse graphs | — | Differences depend on graph density and data structure choice. |
+| Algorithm             | ️ Best For Graph Type     | ️ Time Complexity                                                               |  Space Complexity |  Key Characteristics |
+|:------------------------|:--------------------------|:--------------------------------------------------------------------------------|:--------------------|:------------------------|
+| **Prim’s Algorithm**    | Dense graphs (many edges) | **O(E log V)**                                                                  | **O(V + E)** | Builds MST incrementally using a **priority queue** (min-heap). Works best when graph is stored as adjacency list or matrix. |
+| **Kruskal’s Algorithm** | Sparse graphs (few edges) | **O(E log E)**                                                                  | **O(E)** | Sorts edges by weight and uses **Union–Find (Disjoint Set)** to avoid cycles. Ideal for edge list representation. |
+| **Result Accuracy**     | —                         |  Both produce the same MST total cost                                           | — | Confirms algorithm correctness on all test graphs. |
+| **Performance Trend**   | —                         |  *Prim* → faster on dense graphs  <br>  *Kruskal* → faster on sparse graphs | — | Differences depend on graph density and data structure choice. |
 
 
 📈 Both algorithms produce identical MST cost values, confirming correctness

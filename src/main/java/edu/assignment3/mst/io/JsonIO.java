@@ -15,7 +15,6 @@ public class JsonIO {
     private static final ObjectMapper M = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
 
-    // Читать входной файл любого типа и вернуть список готовых Graph + метаданные (id/name)
     public static List<Item> readAnyGraphs(Path path) throws IOException {
         JsonNode root;
         try(InputStream in = Files.newInputStream(path)) { root = M.readTree(in); }
@@ -24,9 +23,7 @@ public class JsonIO {
         List<Item> out = new ArrayList<>();
         int autoId = 1;
         for(JsonNode g : arr){
-// detect type: nodes[from/to/weight] OR vertices/edges(u,v,w)
             if(g.has("nodes") && g.has("edges")){
-// nodes: ["V0","V1",...], edges: {from:"V0", to:"V1", weight:int}
                 List<String> nodes = M.convertValue(g.get("nodes"), new TypeReference<List<String>>(){});
                 Map<String,Integer> idx = new HashMap<>();
                 for(int i=0;i<nodes.size();i++) idx.put(nodes.get(i), i);

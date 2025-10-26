@@ -35,7 +35,6 @@ public class MSTTests {
         }
     }
 
-    // Негативный тест: несвязный граф → MST не существует
     @Test
     void disconnected_detected() {
         Graph g = new Graph(4, List.of(

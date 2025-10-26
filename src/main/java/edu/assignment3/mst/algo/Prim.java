@@ -17,7 +17,6 @@ public class Prim {
         // (w, from, to)
         PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
 
-        // стартуем с вершины 0
         in[0] = true;
         for (Edge e : g.adj.get(0)) {
             pq.add(new int[]{e.w, e.u, e.v});
@@ -31,7 +30,6 @@ public class Prim {
             int[] cur = pq.poll(); out.ops.pqPops++;
             int w = cur[0], u = cur[1], v = cur[2];
 
-            // берем только ребро, ведущее ВНЕ текущего остова
             if (in[v]) continue;
 
             in[v] = true;
@@ -42,7 +40,6 @@ public class Prim {
             et.u = u; et.v = v; et.w = w;
             out.mstEdges.add(et);
 
-            // обновляем фронтир: из новой вершины v кидаем рёбра на «снаружи»
             for (Edge e : g.adj.get(v)) {
                 if (!in[e.v]) {
                     pq.add(new int[]{e.w, e.u, e.v});

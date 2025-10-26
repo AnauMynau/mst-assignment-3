@@ -4,15 +4,14 @@ import java.util.*;
 
 public class Graph {
     public final int V;
-    public final List<Edge> edges;        // НОРМАЛИЗОВАННЫЕ неориентированные рёбра
-    public final List<List<Edge>> adj;    // симметричная смежность для Прима
+    public final List<Edge> edges;
+    public final List<List<Edge>> adj;
 
     public Graph(int V, List<Edge> inputEdges) {
         this.V = V;
 
-        // 1) нормализация: одна запись на пару (a,b) с минимальным весом
         Map<Long, Integer> minWeightByPair = new HashMap<>();
-        // кодируем пару (a,b) в long-ключ: a<=b
+
         for (Edge e : inputEdges) {
             if (e.u < 0 || e.u >= V || e.v < 0 || e.v >= V) {
                 throw new IllegalArgumentException("Edge endpoint out of range: " + e);
@@ -23,7 +22,6 @@ public class Graph {
             minWeightByPair.merge(key, e.w, Math::min);
         }
 
-        // 2) собираем финальный список рёбер
         List<Edge> norm = new ArrayList<>(minWeightByPair.size());
         for (Map.Entry<Long, Integer> en : minWeightByPair.entrySet()) {
             int a = (int) (en.getKey() >> 32);
@@ -32,7 +30,6 @@ public class Graph {
         }
         this.edges = List.copyOf(norm);
 
-        // 3) строим симметричную смежность из нормализованных рёбер
         this.adj = new ArrayList<>(V);
         for (int i = 0; i < V; i++) adj.add(new ArrayList<>());
         for (Edge e : this.edges) {

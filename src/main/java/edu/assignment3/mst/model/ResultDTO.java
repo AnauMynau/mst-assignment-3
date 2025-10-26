@@ -5,38 +5,40 @@ import java.util.List;
 
 public class ResultDTO {
 
+    public List<PerGraph> results = new ArrayList<>();
+
     public static class PerGraph {
-        public String graph;
+        public int id; // всегда заполнен
+        public String name; // может быть null
         public int vertices;
         public int edges;
-        public AlgoResult prim;
-        public AlgoResult kruskal;
+        public Algo prim;
+        public Algo kruskal;
         public boolean equalCost;
         public boolean connected;
     }
 
-    public static class AlgoResult {
-        public long mstCost;
-        public long timeMs;
-        public List<EdgeTriple> mstEdges = new ArrayList<>();
-        public Ops ops = new Ops();
-    }
 
-    public static class EdgeTriple {
-        public int u; public  int v; public int w;
-        public EdgeTriple() {}
-        public EdgeTriple(int u, int v, int w) {
-            this.u = u; this.v = v; this.w = w;
+    public static class Algo {
+        public long mstCost; // Long.MAX_VALUE если несвязный
+        public List<EdgeTriple> mstEdges = new ArrayList<>();
+        public long timeMs; // миллисекунды
+        public Ops ops = new Ops(); // счётчики операций
+        public long opCount() { // агрегированная метрика для CSV
+            return ops.pqPushes + ops.pqPops + ops.edgeConsidered + ops.edgeChecks + ops.unions + ops.finds;
         }
     }
 
+
+    public static class EdgeTriple { public int u; public int v; public int w; }
+
+
     public static class Ops {
-        public long pqPushes; //Prim
-        public long pqPops;     //Prim
-        public long edgeConsidered;     //Prin
-        public long sortComparisons;    // optional, not measured precisely
-        public long edgeChecks;      // Kruslal - edges inspected
-        public long unions;     //Kruskal - succesful unions
-        public long finds;      //Kruskal - find operations
+        public long pqPushes; // Prim
+        public long pqPops; // Prim
+        public long edgeConsidered; // Prim
+        public long edgeChecks; // Kruskal
+        public long unions; // Kruskal
+        public long finds;
     }
 }
